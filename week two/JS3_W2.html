@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Events Tasks</title>
+    <style>
+        .highlight {
+            border: 2px solid red;
+        }
+        .tooltip {
+            display: none;
+            position: absolute;
+            background-color: black;
+            color: white;
+            padding: 5px;
+            border-radius: 3px;
+        }
+        .active {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+
+<h1>JavaScript Events Tasks</h1>
+
+<!-- Task 1 -->
+<button id="basicButton">Click Me</button>
+
+<!-- Task 2 -->
+<button id="changeTextButton">Change Text</button>
+<p id="textParagraph">Original Text</p>
+
+<!-- Task 3 -->
+<div id="colorDiv" style="width: 100px; height: 100px; background-color: lightgray;">Double-click me</div>
+
+<!-- Task 4 & 5 -->
+<div id="hoverDiv" style="width: 200px; height: 50px; background-color: lightblue;">Hover over me</div>
+
+<!-- Task 6 -->
+<form id="myForm">
+    <input type="text" name="name" placeholder="Name">
+    <button type="submit">Submit</button>
+</form>
+
+<!-- Task 7 & 8 -->
+<input type="text" id="focusInput" placeholder="Focus on me">
+
+<!-- Task 9 -->
+<input type="text" id="keyInput" placeholder="Press any key">
+
+<!-- Task 10 -->
+<div id="toggleDiv" style="width: 100px; height: 100px; background-color: lightgreen;">Toggle Class</div>
+
+<!-- Task 11 -->
+<form id="validationForm">
+    <input type="text" id="username" placeholder="Username">
+    <input type="password" id="password" placeholder="Password">
+    <button type="submit">Submit</button>
+</form>
+
+<!-- Task 12 -->
+<img id="image" src="https://via.placeholder.com/150" alt="Placeholder Image">
+<button id="changeImageButton">Change Image</button>
+
+<!-- Task 13 -->
+<input type="checkbox" id="showPassword"> Show Password
+<input type="password" id="passwordField" placeholder="Password">
+
+<!-- Task 14 -->
+<input type="color" id="colorPicker">
+<div id="colorBox" style="width: 100px; height: 100px; background-color: lightgray;"></div>
+
+<!-- Task 15 -->
+<div id="carousel">
+    <button id="prevButton">Previous</button>
+    <img id="carouselImage" src="https://via.placeholder.com/150" alt="Carousel Image">
+    <button id="nextButton">Next</button>
+</div>
+
+<!-- Task 16 -->
+<button id="loadContentButton">Load Content</button>
+<div id="contentDiv">Dynamic Content</div>
+
+<!-- Task 17 -->
+<div id="contextDiv" style="width: 200px; height: 50px; background-color: lightcoral;">Right-click me</div>
+<div id="customMenu" class="tooltip">Custom Menu</div>
+
+<!-- Task 18 -->
+<div id="resizeDiv">Resize the window</div>
+
+<!-- Task 19 -->
+<button id="scrollTopButton">Scroll to Top</button>
+
+<!-- Task 20 -->
+<a href="https://www.example.com" id="preventLink">Go to Example.com</a>
+
+<!-- Task 21 -->
+<div id="tooltipDiv" style="width: 100px; height: 50px; background-color: lightgoldenrodyellow;">Hover me</div>
+<div id="tooltip" class="tooltip">Tooltip text</div>
+
+<script>
+    // Task 1
+    document.getElementById('basicButton').addEventListener('click', function() {
+        alert('Button clicked!');
+    });
+
+    // Task 2
+    document.getElementById('changeTextButton').addEventListener('click', function() {
+        document.getElementById('textParagraph').innerText = 'Text changed!';
+    });
+
+    // Task 3
+    document.getElementById('colorDiv').addEventListener('dblclick', function() {
+        this.style.backgroundColor = 'lightgreen';
+    });
+
+    // Task 4 & 5
+    let hoverDiv = document.getElementById('hoverDiv');
+    hoverDiv.addEventListener('mouseenter', function() {
+        this.innerText = 'Mouse entered!';
+    });
+    hoverDiv.addEventListener('mouseleave', function() {
+        this.innerText = 'Hover over me';
+    });
+
+    // Task 6
+    document.getElementById('myForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        console.log('Form not submitted');
+    });
+
+    // Task 7 & 8
+    let focusInput = document.getElementById('focusInput');
+    focusInput.addEventListener('focus', function() {
+        this.classList.add('highlight');
+    });
+    focusInput.addEventListener('blur', function() {
+        this.classList.remove('highlight');
+    });
+
+    // Task 9
+    document.getElementById('keyInput').addEventListener('keydown', function(event) {
+        console.log(`Key pressed: ${event.key}`);
+    });
+
+    // Task 10
+    document.getElementById('toggleDiv').addEventListener('click', function() {
+        this.classList.toggle('active');
+    });
+
+    // Task 11
+    document.getElementById('validationForm').addEventListener('submit', function(event) {
+        let username = document.getElementById('username').value;
+        let password = document.getElementById('password').value;
+        if (username === '' || password === '') {
+            event.preventDefault();
+            alert('Please fill in all fields');
+        }
+    });
+
+    // Task 12
+    document.getElementById('changeImageButton').addEventListener('click', function() {
+        document.getElementById('image').src = 'https://via.placeholder.com/200';
+    });
+
+    // Task 13
+    document.getElementById('showPassword').addEventListener('change', function() {
+        let passwordField = document.getElementById('passwordField');
+        passwordField.type = this.checked ? 'text' : 'password';
+    });
+
+    // Task 14
+    document.getElementById('colorPicker').addEventListener('input', function() {
+        document.getElementById('colorBox').style.backgroundColor = this.value;
+    });
+
+    // Task 15
+    let images = [
+        'https://via.placeholder.com/150',
+        'https://via.placeholder.com/200',
+        'https://via.placeholder.com/250'
+    ];
+    let currentImageIndex = 0;
+
+    document.getElementById('prevButton').addEventListener('click', function() {
+        currentImageIndex = (currentImageIndex === 0) ? images.length - 1 : currentImageIndex - 1;
+        document.getElementById('carouselImage').src = images[currentImageIndex];
+    });
+
+    document.getElementById('nextButton').addEventListener('click', function() {
+        currentImageIndex = (currentImageIndex === images.length - 1) ? 0 : currentImageIndex + 1;
+        document.getElementById('carouselImage').src = images[currentImageIndex];
+    });
+
+    // Task 16
+    let contentArray = ['Content 1', 'Content 2', 'Content 3'];
+    document.getElementById('loadContentButton').addEventListener('click', function() {
+        let contentDiv = document.getElementById('contentDiv');
+        contentDiv.innerText = contentArray[Math.floor(Math.random() * contentArray.length)];
+    });
+
+    // Task 17
+    let contextDiv = document.getElementById('contextDiv');
+    let customMenu = document.getElementById('customMenu');
+
+    contextDiv.addEventListener('contextmenu', function(event) {
+        event.preventDefault();
+        customMenu.style.display = 'block';
+        customMenu.style.left = `${event.pageX}px`;
+        customMenu.style.top = `${event.pageY}px`;
+    });
+
+    document.addEventListener('click', function() {
+        customMenu.style.display = 'none';
+    });
+
+    // Task 18
+    window.addEventListener('resize', function() {
+        console.log(`Width: ${window.innerWidth}, Height: ${window.innerHeight}`);
+    });
+
+    // Task 19
+    document.getElementById('scrollTopButton').addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Task 20
+    document.getElementById('preventLink').addEventListener('click', function(event) {
+        event.preventDefault();
+        alert('Link click prevented!');
+    });
+
+    // Task 21
+    let tooltipDiv = document.getElementById('tooltipDiv');
+    let tooltip = document.getElementById('tooltip');
+
+    tooltipDiv.addEventListener('mouseenter', function(event) {
+        tooltip.style.display = 'block';
+        tooltip.style.left = `${event.pageX}px`;
+        tooltip.style.top = `${event.pageY}px`;
+    });
+
+    tooltipDiv.addEventListener('mouseleave', function() {
+        tooltip.style.display = 'none';
+    });
+</script>
+
+</body>
+</html>

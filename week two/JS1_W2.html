@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Manipulation Tasks</title>
+    <style>
+        .item, .highlight, .box {
+            margin: 10px 0;
+        }
+        .container {
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+
+<h1 id="header">Header</h1>
+
+<div>
+    <p class="item">Item 1</p>
+    <p class="item">Item 2</p>
+    <p class="item">Item 3</p>
+</div>
+
+<div>
+    <p>Paragraph 1</p>
+    <p>Paragraph 2</p>
+    <p>Paragraph 3</p>
+</div>
+
+<div>
+    <p class="highlight">Highlight 1</p>
+    <p class="highlight">Highlight 2</p>
+</div>
+
+<div>
+    <ul>
+        <li>List Item 1</li>
+        <li>List Item 2</li>
+        <li>List Item 3</li>
+    </ul>
+</div>
+
+<h2 id="footer">Footer</h2>
+
+<div>
+    <p class="box">Box 1</p>
+    <p class="box">Box 2</p>
+    <p class="box">Box 3</p>
+</div>
+
+<div class="container">
+    <p>Nested paragraph in container</p>
+</div>
+
+<div data-role="admin">Admin Role</div>
+
+<section>
+    <span>Span 1</span>
+    <span>Span 2</span>
+    <span>Span 3</span>
+</section>
+
+<script>
+    // Task 1
+    document.getElementById('header').innerText = 'Welcome to DOM Manipulation!';
+
+    // Task 2
+    let items = document.getElementsByClassName('item');
+    for (let i = 0; i < items.length; i++) {
+        items[i].innerText = 'Class Item';
+    }
+
+    // Task 3
+    let paragraphs = document.getElementsByTagName('p');
+    for (let i = 0; i < paragraphs.length; i++) {
+        paragraphs[i].innerText = 'Paragraph Element';
+    }
+
+    // Task 4
+    document.querySelector('.highlight').innerText = 'First Highlighted Item';
+
+    // Task 5
+    let listItems = document.querySelectorAll('li');
+    listItems.forEach(item => item.innerText = 'List Item');
+
+    // Task 6
+    document.querySelector('#footer').innerText = 'Footer Updated';
+
+    // Task 7
+    let boxes = document.querySelectorAll('.box');
+    boxes.forEach(box => box.innerText = 'Box Item');
+
+    // Task 8
+    document.querySelector('.container p').innerText = 'Nested paragraph in container updated';
+
+    // Task 9
+    document.querySelector('[data-role="admin"]').innerText = 'Admin Role';
+
+    // Task 10
+    let spans = document.querySelectorAll('section span');
+    spans.forEach(span => span.innerText = 'Span Element');
+</script>
+
+</body>
+</html>

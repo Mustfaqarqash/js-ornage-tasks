@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>API Data Fetching and Display</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        padding: 20px;
+    }
+    .section {
+        margin-bottom: 30px;
+    }
+    .post {
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+    .comments {
+        margin-left: 20px;
+        padding: 5px;
+        border-left: 2px solid #ccc;
+    }
+    .albums {
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+    .album-photos {
+        margin-left: 20px;
+        padding: 5px;
+        border-left: 2px solid #ccc;
+    }
+    .todo {
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+    .users {
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+</style>
+</head>
+<body>
+    <div class="section">
+        <h2>Task 1: Fetch and Display Posts</h2>
+        <div id="posts"></div>
+    </div>
+
+    <div class="section">
+        <h2>Task 2: Fetch and Display Comments for a Post</h2>
+        <div id="comments"></div>
+    </div>
+
+    <div class="section">
+        <h2>Task 3: Fetch and Display User Albums</h2>
+        <div id="albums"></div>
+    </div>
+
+    <div class="section">
+        <h2>Task 4: Fetch and Display Photos from an Album</h2>
+        <div id="photos"></div>
+    </div>
+
+    <div class="section">
+        <h2>Task 5: Fetch and Display To-Do Items</h2>
+        <div id="todos"></div>
+    </div>
+
+    <div class="section">
+        <h2>Task 6: Fetch and Display Users</h2>
+        <div id="users"></div>
+    </div>
+
+    <div class="section">
+        <h2>Bonus Task: Combine Endpoints</h2>
+        <div id="combined"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Task 1: Fetch and Display Posts
+            fetch('https://jsonplaceholder.typicode.com/posts')
+                .then(response => response.json())
+                .then(posts => {
+                    const postsContainer = document.getElementById('posts');
+                    posts.forEach(post => {
+                        const postElement = document.createElement('div');
+                        postElement.classList.add('post');
+                        postElement.innerHTML = `
+                            <h3>${post.title}</h3>
+                            <p>${post.body}</p>
+                        `;
+                        postsContainer.appendChild(postElement);
+                    });
+                });
+
+            // Task 2: Fetch and Display Comments for a Post
+            fetch('https://jsonplaceholder.typicode.com/comments?postId=1')
+                .then(response => response.json())
+                .then(comments => {
+                    const commentsContainer = document.getElementById('comments');
+                    comments.forEach(comment => {
+                        const commentElement = document.createElement('div');
+                        commentElement.classList.add('comments');
+                        commentElement.innerHTML = `
+                            <h4>${comment.name} (${comment.email})</h4>
+                            <p>${comment.body}</p>
+                        `;
+                        commentsContainer.appendChild(commentElement);
+                    });
+                });
+
+            // Task 3: Fetch and Display User Albums
+            fetch('https://jsonplaceholder.typicode.com/albums?userId=1')
+                .then(response => response.json())
+                .then(albums => {
+                    const albumsContainer = document.getElementById('albums');
+                    albums.forEach(album => {
+                        const albumElement = document.createElement('div');
+                        albumElement.classList.add('albums');
+                        albumElement.innerHTML = `
+                            <h3>${album.title}</h3>
+                        `;
+                        albumsContainer.appendChild(albumElement);
+                    });
+                });
+
+            // Task 4: Fetch and Display Photos from an Album
+            fetch('https://jsonplaceholder.typicode.com/photos?albumId=1')
+                .then(response => response.json())
+                .then(photos => {
+                    const photosContainer = document.getElementById('photos');
+                    photos.forEach(photo => {
+                        const photoElement = document.createElement('div');
+                        photoElement.classList.add('album-photos');
+                        photoElement.innerHTML = `
+                            <h3>${photo.title}</h3>
+                            <img src="${photo.thumbnailUrl}" alt="${photo.title}">
+                        `;
+                        photosContainer.appendChild(photoElement);
+                    });
+                });
+
+            // Task 5: Fetch and Display To-Do Items
+            fetch('https://jsonplaceholder.typicode.com/todos')
+                .then(response => response.json())
+                .then(todos => {
+                    const todosContainer = document.getElementById('todos');
+                    todos.forEach(todo => {
+                        const todoElement = document.createElement('div');
+                        todoElement.classList.add('todo');
+                        todoElement.innerHTML = `
+                            <h4>${todo.title}</h4>
+                            <input type="checkbox" ${todo.completed ? 'checked' : ''} disabled>
+                        `;
+                        todosContainer.appendChild(todoElement);
+                    });
+                });
+
+            // Task 6: Fetch and Display Users
+            fetch('https://jsonplaceholder.typicode.com/users')
+                .then(response => response.json())
+                .then(users => {
+                    const usersContainer = document.getElementById('users');
+                    users.forEach(user => {
+                        const userElement = document.createElement('div');
+                        userElement.classList.add('users');
+                        userElement.innerHTML = `
+                            <h3>${user.name}</h3>
+                            <p>Username: ${user.username}</p>
+                            <p>Email: ${user.email}</p>
+                            <p>Address: ${user.address.street}, ${user.address.suite}, ${user.address.city}, ${user.address.zipcode}</p>
+                        `;
+                        usersContainer.appendChild(userElement);
+                    });
+                });
+
+            // Bonus Task: Combine Endpoints
+            fetch('https://jsonplaceholder.typicode.com/posts')
+                .then(response => response.json())
+                .then(posts => {
+                    const combinedContainer = document.getElementById('combined');
+                    posts.forEach(post => {
+                        const combinedElement = document.createElement('div');
+                        combinedElement.classList.add('post');
+                        combinedElement.innerHTML = `
+                            <h3>${post.title}</h3>
+                            <p>${post.body}</p>
+                            <button onclick="fetchComments(${post.id})">Load Comments</button>
+                        `;
+                        combinedContainer.appendChild(combinedElement);
+                    });
+                });
+
+            function fetchComments(postId) {
+                fetch(`https://jsonplaceholder.typicode.com/comments?postId=${postId}`)
+                    .then(response => response.json())
+                    .then(comments => {
+                        const postComments = document.createElement('div');
+                        comments.forEach(comment => {
+                            const commentElement = document.createElement('div');
+                            commentElement.classList.add('comments');
+                            commentElement.innerHTML = `
+                                <h4>${comment.name} (${comment.email})</h4>
+                                <p>${comment.body}</p>
+                            `;
+                            postComments.appendChild(commentElement);
+                        });
+                        const postContainer = document.querySelector(`#combined .post:nth-child(${postId})`);
+                        postContainer.appendChild(postComments);
+                    });
+            }
+        });
+    </script>
+</body>
+</html>

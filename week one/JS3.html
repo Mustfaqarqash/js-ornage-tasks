@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Day 3 Tasks</title>
+</head>
+<body>
+
+<h1>JavaScript Day 3 Tasks</h1>
+
+<script>
+    function sayHello(name) {
+        console.log(`Hello, ${name}!`);
+    }
+    sayHello('Alice');
+    sayHello('Bob');
+
+    const square = function(number) {
+        return number * number;
+    }
+    console.log(square(2));
+    console.log(square(5));
+
+    const multiply = (a, b) => a * b;
+    console.log(multiply(2, 3));
+    console.log(multiply(4, 5));
+
+    const car = {
+        make: 'Toyota',
+        model: 'Camry',
+        year: 2020,
+        getCarInfo: function() {
+            return `${this.make} ${this.model} (${this.year})`;
+        }
+    }
+    console.log(car.make);
+    console.log(car.getCarInfo());
+
+    const colors = ['Red', 'Green', 'Blue'];
+    function printColors(array) {
+        array.forEach(color => console.log(color));
+    }
+    printColors(colors);
+
+    function getStringLength(str) {
+        return str.length;
+    }
+    console.log(getStringLength('Hello'));
+    console.log(getStringLength('JavaScript'));
+
+    function toUpperCase(str) {
+        return str.toUpperCase();
+    }
+    console.log(toUpperCase('hello'));
+    console.log(toUpperCase('world'));
+
+    function splitString(str, delimiter) {
+        return str.split(delimiter);
+    }
+    console.log(splitString('Hello,World', ','));
+    console.log(splitString('JavaScript is fun', ' '));
+</script>
+
+</body>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Tasks</title>
+</head>
+<body>
+
+<h1>JavaScript Tasks</h1>
+
+<script>
+    // Task 1: Accounting equations
+
+    // Cash flow ratio
+    let cash = 1000;
+    let currentLiabilities = 500;
+    let cashFlowRatio = cash / currentLiabilities;
+    console.log("Cash flow ratio:", cashFlowRatio); // Output: 2
+
+    // Net income
+    let revenues = 1000;
+    let expenses = 500;
+    let netIncome = revenues - expenses;
+    console.log("Net income:", netIncome); // Output: 500
+
+    // Total assets
+    let liabilities = 1000;
+    let equity = 500;
+    let totalAssets = liabilities + equity;
+    console.log("Total assets:", totalAssets); // Output: 1500
+
+    // Net income (using profit margin and sales)
+    let profit = 1000;
+    let sales = 500;
+    let netIncomeUsingProfitMargin = profit * sales;
+    console.log("Net income using profit margin:", netIncomeUsingProfitMargin); // Output: 500000
+
+    // Average
+    let numbers = [7, 9, 2];
+    let average = numbers.reduce((a, b) => a + b, 0) / numbers.length;
+    console.log("Average:", average); // Output: 6
+
+    // Discount
+    let price = 150;
+    let discountPercentage = 30;
+    let discountAmount = (discountPercentage / 100) * price;
+    let discountedPrice = price - discountAmount;
+    console.log("Discounted price:", discountedPrice); // Output: 105
+
+    // Age limit (older than 18 and less than 30)
+    let age = 20;
+    let ageLimit = age > 18 && age < 30;
+    console.log("Age limit:", ageLimit); // Output: true
+
+    // Exponential
+    let number1 = 2;
+    let number2 = 3;
+    let exponential = Math.pow(number1, number2);
+    console.log("Exponential:", exponential); // Output: 8
+
+    // Remainder
+    number1 = 10;
+    number2 = 4;
+    let remainder = number1 % number2;
+    console.log("Remainder:", remainder); // Output: 2
+
+    // Task 2: Output and explanation of expressions
+
+    console.log("typeof(100):", typeof(100)); // Output: "number"
+    console.log("typeof(73.9):", typeof(73.9)); // Output: "number"
+    console.log("typeof(NaN):", typeof(NaN)); // Output: "number"
+    console.log("typeof('Water'):", typeof('Water')); // Output: "string"
+    console.log("typeof(false):", typeof(false)); // Output: "boolean"
+    console.log("typeof(9 != 11):", typeof(9 != 11)); // Output: "boolean"
+    console.log("'Orang' + 'e':", 'Orang' + 'e'); // Output: "Orange"
+    console.log("'Orange' - 's':", 'Orange' - 's'); // Output: NaN
+    console.log("'4' + '8':", '4' + '8'); // Output: "48"
+    console.log("'4' - '8':", '4' - '8'); // Output: -4
+    console.log("'name' + 3:", 'name' + 3); // Output: "name3"
+    console.log("'name' - 3:", 'name' - 3); // Output: NaN
+    console.log("82 * 'word':", 82 * 'word'); // Output: NaN
+    console.log("1 + 'hello':", 1 + 'hello'); // Output: "1hello"
+    console.log("'hello' + 1:", 'hello' + 1); // Output: "hello1"
+    console.log("1 + true:", 1 + true); // Output: 2
+    console.log("'hello' + true:", 'hello' + true); // Output: "hellotrue"
+    console.log("typeof (Infinity):", typeof(Infinity)); // Output: "number"
+    console.log("1 == '1':", 1 == '1'); // Output: true
+    console.log("1 === '1':", 1 === '1'); // Output: false
+
+    // Task 3: String methods
+
+    let str = "Welcome to Orange";
+    console.log("Uppercase:", str.toUpperCase()); // Output: WELCOME TO ORANGE
+    console.log("Substring 'TO':", str.substring(8, 10)); // Output: TO
+    console.log("Replace 'Welcome to Orange' with 'Hello from Orange':", str.replace("Welcome to", "Hello from")); // Output: Hello from Orange
+    console.log("Lowercase:", str.toLowerCase()); // Output: welcome to orange
+    console.log("Length of string:", str.length); // Output: 17
+    console.log('Insert quotes:', str.replace('Orange', '"Orange"')); // Output: Welcome to “Orange”
+    console.log('Add Jordan:', str.concat(" Jordan")); // Output: Welcome to Orange Jordan
+
+    // Task 4: Welcome message using alert
+    alert('Welcome to the JavaScript World!');
+
+    // Task 5: Declare and initialize 50 variables of different data types
+    let var1 = "String 1";
+    let var2 = "String 2";
+    let var3 = 10;
+    let var4 = 20.5;
+    let var5 = true;
+    let var6 = false;
+    let var7 = [1, 2, 3];
+    let var8 = ["a", "b", "c"];
+    let var9 = { key: "value" };
+    let var10 = { name: "John", age: 30 };
+
+
+    console.log(var1, var2, var3, var4, var5, var6, var7, var8, var9, var10,);
+
+    // Task 6: Scope differences between let and var
+    if (true) {
+        var varVariable = "I'm a var variable";
+        let letVariable = "I'm a let variable";
+    }
+    console.log(varVariable); // Output: I'm a var variable
+    // console.log(letVariable); // Output: ReferenceError: letVariable is not defined
+
+    // Task 7: Arithmetic, comparison, logical, and assignment operations
+
+    let a = 10;
+    let b = 5;
+
+    // Arithmetic operations
+    console.log("Addition:", a + b); // Output: 15
+    console.log("Subtraction:", a - b); // Output: 5
+    console.log("Multiplication:", a * b); // Output: 50
+    console.log("Division:", a / b); // Output: 2
+    console.log("Modulus:", a % b); // Output: 0
+
+    // Comparison operations
+    console.log("Greater than:", a > b); // Output: true
+    console.log("Less than:", a < b); // Output: false
+    console.log("Equal to:", a == b); // Output: false
+    console.log("Not equal to:", a != b); // Output: true
+    console.log("Greater than or equal to:", a >= b); // Output: true
+    console.log("Less than or equal to:", a <= b); // Output: false
+
+    // Logical operations
+    let x = true;
+    let y = false;
+    console.log("AND:", x && y); // Output: false
+    console.log("OR:", x || y); // Output: true
+    console.log("NOT x:", !x); // Output: false
+    console.log("NOT y:", !y); // Output: true
+
+    // Assignment operations
+    a += 5;
+    console.log("Add and assign:", a); // Output: 15
+    a -= 5;
+    console.log("Subtract and assign:", a); // Output: 10
+    a *= 2;
+    console.log("Multiply and assign:", a); // Output: 20
+
+    // Task 8: Display messages using various methods
+    document.body.innerHTML += '<p>This is displayed using innerHTML</p>';
+    document.write('<p>This is displayed using document.write()</p>');
+    window.alert('This is displayed using window.alert()');
+    console.log('This is displayed using console.log()');
+</script>
+
+</body>
+</html>
